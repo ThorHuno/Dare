@@ -1,0 +1,3 @@
+export const types = {
+    AGREGAR_PARTICIPANTE: 'AGREGAR_PARTICIPANTE',
+}

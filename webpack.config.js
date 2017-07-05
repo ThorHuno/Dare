@@ -11,6 +11,10 @@ module.exports = {
         alias: {
             ListadoParticipantes: 'app/components/listadoParticipantes.jsx',
             Participante: 'app/components/participante.jsx',
+            Constantes: 'app/constants/constants.js',
+            ParticipantesReducer: 'app/reducers/participantes.reducer.jsx',
+            ParticipantesAction: 'app/actions/participantes.action.jsx',
+            ConfigureStore: 'app/store/store.config.jsx',
         },
         extensions: ['.js', '.jsx']
     },

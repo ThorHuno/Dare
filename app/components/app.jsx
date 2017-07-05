@@ -1,14 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {Provider} from 'react-redux'
 import ListadoParticipantes from 'ListadoParticipantes'
+
+var store = require('ConfigureStore').configure();
 
 class App extends React.Component {
     render() {
-        return ( < div > <h1>Hola mundo</h1> < ListadoParticipantes participantes = {
-            ['equipo1', 'equipo2']
-        } /> </div>);
+        return ( < div > < ListadoParticipantes /> </div>);
     }
 }
 
 ReactDOM.render(
-    <App/>, document.getElementById("root"));
+    <Provider store={store}>
+    <App/>
+</Provider>, document.getElementById("root"));
