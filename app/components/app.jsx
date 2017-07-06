@@ -5,6 +5,8 @@ import ListadoParticipantes from 'ListadoParticipantes'
 
 var store = require('ConfigureStore').configure();
 
+require('bootstrap/dist/css/bootstrap.min.css')
+
 class App extends React.Component {
     render() {
         return ( < div > < ListadoParticipantes /> </div>);

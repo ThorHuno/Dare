@@ -1,5 +1,13 @@
+var webpack = require('webpack');
+
 module.exports = {
-    entry: './app/components/app.jsx',
+    entry: [
+        'script-loader!jquery/dist/jquery.min.js', 'script-loader!bootstrap/dist/js/bootstrap.min.js', './app/components/app.jsx'
+    ],
+    externals: {
+        jquery: 'jQuery'
+    },
+    plugins: [new webpack.ProvidePlugin({'$': 'jquery', 'jQuery': 'jquery'})],
     output: {
         path: __dirname,
         filename: './public/bundle.js'
@@ -14,7 +22,7 @@ module.exports = {
             Constantes: 'app/constants/constants.js',
             ParticipantesReducer: 'app/reducers/participantes.reducer.jsx',
             ParticipantesAction: 'app/actions/participantes.action.jsx',
-            ConfigureStore: 'app/store/store.config.jsx',
+            ConfigureStore: 'app/store/store.config.jsx'
         },
         extensions: ['.js', '.jsx']
     },
@@ -29,13 +37,10 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/
             }, {
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    }, {
-                        loader: "css-loader"
-                    }
-                ]
+                use: ["style-loader", "css-loader"]
+            }, {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
             }
         ]
     }

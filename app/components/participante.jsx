@@ -6,7 +6,7 @@ class Participante extends React.Component {
     }
     render() {
         return (
-            <li>{this.props.nombre}</li>
+            <li className="list-group-item">{this.props.nombre}</li>
         );
     }
 }
