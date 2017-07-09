@@ -7,6 +7,11 @@ export var Participante = (state = [], action) => {
                 ...state,
                 action.participante
             ]
+        case types.ELIMINAR_PARTICIPANTE:
+            return [
+                ...state.slice(0, action.indice),
+                ...state.slice(action.indice + 1)
+            ]
         default:
             return state
     }

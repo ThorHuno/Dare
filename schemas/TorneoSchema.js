@@ -1,65 +1,73 @@
 const schemaGuardarTorneo = {
     "properties": {
-        "nombre": {
+        "Nombre": {
             "type": "string",
             "minLength": 5,
             "maxLength": 30
         },
-        "tipo-torneo": {
+        "TipoTorneo": {
             "type": "string"
         },
-        "numero-participantes": {
+        "NumeroParticipantes": {
             "type": "integer",
             "minimum": 2,
             "maximum": 128
         },
-        "numero-byes": {
+        "NumeroByes": {
             "type": "integer",
             "minimum": 0,
             "maximum": 63
         },
-        "numero-fases": {
+        "NumeroFases": {
             "type": "integer",
             "minimum": 1,
             "maximum": 7
         },
-        "numero-juegos-totales": {
+        "NumeroJuegosTotales": {
             "type": "integer",
             "minimum": 1,
             "maximum": 127
         },
-        "numero-juegos-primera-fase": {
+        "NumeroJuegosPrimeraFase": {
             "type": "integer",
             "minimum": 1,
             "maximum": 64
         },
-        "usuario-creacion": {
+        "UsuarioCreacion": {
             "type": "string",
             "minLength": 6,
             "maxLength": 12
         },
-        "fecha-creacion": {
+        "FechaCreacion": {
             "type": "string",
             "format": "date-time"
         },
-        "participantes": {
+        "Participantes": {
             "type": "array",
             "items": {
                 "type": "string"
             }
+        },
+        "EsPublico": {
+            "type": "bool"
+        },
+        "Juego": {
+            "type": "string",
+            "maxLength": 12
         }
     },
     "required": [
-        "nombre",
-        "tipo-torneo",
-        "numero-participantes",
-        "numero-byes",
-        "numero-fases",
-        "numero-juegos-totales",
-        "numero-juegos-primera-fase",
-        "usuario-creacion",
-        "fecha-creacion",
-        "participantes"
+        "Nombre",
+        "TipoTorneo",
+        "NumeroParticipantes",
+        "NumeroByes",
+        "NumeroFases",
+        "NumeroJuegosTotales",
+        "NumeroJuegosPrimeraFase",
+        "UsuarioCreacion",
+        "FechaCreacion",
+        "Participantes",
+        "EsPublico"
     ]
 };
 

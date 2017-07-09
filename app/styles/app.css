@@ -1,0 +1,32 @@
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.flotante-izquierda{
+    float: left !important;
+}
+
+.contenedor-arrastre{
+    background: url('../images/drag-drop.png') no-repeat;
+    height: 30px;
+    width: 6px;
+    cursor: -webkit-grab
+}
+
+.contenedor-input{
+    margin-left: 10px
+}
+
+.contenedor-eliminar{
+    height: 30px;
+    width: 18px;
+}
+
+.contenedor-eliminar span.eliminar{
+    padding: 8px;
+    color: #dc2222;
+    font-size: 16px;
+    cursor: pointer;
+}

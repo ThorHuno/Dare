@@ -16,8 +16,9 @@ app.use(bodyParser.urlencoded({extended: true})); // support encoded bodies
 
 //inicializo firebase
 const DBREF = dbConfig();
-
-// Configuro la base de datos dbConfig(); Configuración de conexión segura https
+// var TipostorneosRef = DBREF.child('TiposTorneo');
+// TipostorneosRef.push({Nombre: 'Eliminación simple'});Configuro la base de
+// datos dbConfig(); Configuración de conexión segura https
 const PUERTO = process.env.PORT || 4000;
 
 app.use(function (req, res, next) {
@@ -58,6 +59,24 @@ rutas.post("/GuardarTorneo", (req, res) => {
             .json(error);
     }
 });
+
+rutas.get('/ObtenerTiposTorneo', (req, res) => {
+    DBREF
+        .child('TiposTorneo')
+        .once("value")
+        .then((snapshot) => {
+            var datos = snapshot.val();
+            var datosEnArray = [];
+
+            Object
+                .keys(datos)
+                .forEach((elemento) => {
+                    datosEnArray.push({Id: elemento, Valor: datos[elemento].Nombre});
+                });
+
+            res.json(datosEnArray);
+        });
+})
 
 app.use("/api", rutas);
 

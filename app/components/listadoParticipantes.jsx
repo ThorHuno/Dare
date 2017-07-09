@@ -8,20 +8,35 @@ class ListadoParticipantes extends React.Component {
     {
         super(props);
 
-        props.dispatch(ParticipantesAction.AgregarParticipante({nombre: 'equipo1'}));
-        props.dispatch(ParticipantesAction.AgregarParticipante({nombre: 'equipo1'}));
+        props.dispatch(ParticipantesAction.AgregarParticipante({nombre: ''}));
+        props.dispatch(ParticipantesAction.AgregarParticipante({nombre: ''}));
+
+        setTimeout(() => {
+            props.dispatch(ParticipantesAction.AgregarParticipante({nombre: ''}));
+        }, 2000);
     }
 
     render() {
         var {dispatch, participantes} = this.props;
 
         return (
-            <ul className="list-group">
-                {participantes.map((elemento, indice) => {
-                    return <Participante nombre={elemento.nombre} key={indice}/>
-                })
+            <div className="row">
+                <div className="col-lg-3">
+                    <button
+                        className="btn btn-default"
+                        onClick={() => {
+                        this
+                            .props
+                            .dispatch(ParticipantesAction.AgregarParticipante({nombre: ''}));
+                    }}>Agregar participante</button>
+                    <ul className="list-group">
+                        {participantes.map((elemento, indice) => {
+                            return <Participante key={indice} indice={indice}/>
+                        })
 }
-            </ul>
+                    </ul>
+                </div>
+            </div>
         );
     }
 }
