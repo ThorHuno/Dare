@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-var Ajv = require('ajv');
+// var Ajv = require('ajv');
+var jsen = require('jsen');
 
 var dbConfig = require('./database.config.js');
 var CustomError = require('./CustomError.js');
@@ -37,23 +38,29 @@ var rutas = express.Router();
 
 rutas.post("/GuardarTorneo", (req, res) => {
     try {
-        var torneosRef = DBREF.child('torneos');
+        var torneosRef = DBREF.child('Torneos');
         var datos = req.body;
 
-        var ajv = new Ajv({allErrors: true});
+        datos.FechaCreacion = new Date().toISOString();
 
-        var validar = ajv.validate(schemaGuardarTorneo, datos);
+        // var ajv = new Ajv({allErrors: true}); var validar =
+        // ajv.validate(schemaGuardarTorneo, datos);
+        var validador = jsen(schemaGuardarTorneo, {greedy: true});
+        var validar = validador(datos);
 
         if (validar) {
-            torneosRef.push({nombre: req.body.nombre});
-            res.json({estado: true, mensaje: 'Torneo creado satisfactoriamente'});
-        } else 
-            res.json(ajv.errors);
-
-            // torneosRef.on('child_removed', (snapchot) => {     console.log(snapchot); });
+            torneosRef
+                .push(datos)
+                .then((snapshot) => {
+                    res.json({estado: true, mensaje: 'Torneo creado satisfactoriamente'});
+                });
+        } else {
+            res
+                .status(500)
+                .json(validador.errors);
         }
-    catch (ex) {
-        var error = new CustomError('Ha ocurrido un error creando el torneo');
+    } catch (ex) {
+        var error = new CustomError('Ha ocurrido un error creando el torneo', {});
         res
             .status(error.status)
             .json(error);

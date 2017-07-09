@@ -29,6 +29,8 @@ module.exports = {
             ParticipantesAction: 'app/actions/participantes.action.jsx',
             TiposTorneosReducer: 'app/reducers/tiposTorneos.reducer.jsx',
             TiposTorneosAction: 'app/actions/tiposTorneos.action.jsx',
+            CrudTorneoReducer: 'app/reducers/crudTorneo.reducer.jsx',
+            CrudTorneoAction: 'app/actions/crudTorneo.action.jsx',
 
             ConfigureStore: 'app/store/store.config.jsx'
         },

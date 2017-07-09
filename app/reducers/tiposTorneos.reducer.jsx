@@ -21,7 +21,7 @@ export var TiposTorneos = (state = {
                 ...state,
                 tiposTorneo: [
                     ...state.tiposTorneo,
-                    action.tiposTorneo.data
+                    ...action.tiposTorneo.data
                 ]
             }
         case types.ERROR_OBTENIENDO_TIPOS_TORNEO:

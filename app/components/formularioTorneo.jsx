@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as TiposTorneosAction from 'TiposTorneosAction'
+import * as CrudTorneoAction from 'CrudTorneoAction'
 
 class FormularioTorneo extends React.Component {
     constructor(props) {
@@ -9,26 +10,54 @@ class FormularioTorneo extends React.Component {
     }
 
     render() {
+        let GuardarTorneo = () => {
+            let formulario = $('#FrmTorneo').serializeArray();
+            let parametros = {};
+
+            formulario.forEach((elemento, indice) => {
+                parametros[elemento.name] = elemento.value
+            });
+
+            console.log(parametros);
+
+            this
+                .props
+                .dispatch(CrudTorneoAction.GuardadoTorneoRequest(parametros))
+        }
+
         return (
             <div>
                 <form
                     id="FrmTorneo"
                     onSubmit={(e) => {
-                    let formulario = $('#FrmTorneo').serialize();
-                    console.log(formulario);
-                    e.preventDefault()
+                    e.preventDefault();
+                    GuardarTorneo()
                 }}>
                     <div className="form-group">
                         <label htmlFor="TxtNombreTorneo">Nombre:</label>
-                        <input type="text" id="TxtNombreTorneo" name="Nombre" className="form-control"/>
+                        <input
+                            type="text"
+                            id="TxtNombreTorneo"
+                            name="Nombre"
+                            className="form-control"
+                            tabIndex="0"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="TxtJuego">Juego:</label>
-                        <input type="text" id="TxtJuego" name="Juego" className="form-control"/>
+                        <input
+                            type="text"
+                            id="TxtJuego"
+                            name="Juego"
+                            className="form-control"
+                            tabIndex="1"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="CboTipoTorneo">Tipo de torneo:</label>
-                        <select name="TipoTorneo" id="CboTipoTorneo" className="form-control">
+                        <select
+                            name="TipoTorneo"
+                            id="CboTipoTorneo"
+                            className="form-control"
+                            tabIndex="2">
                             {this
                                 .props
                                 .TiposTorneos
@@ -40,11 +69,12 @@ class FormularioTorneo extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="TxtJuego">
-                            <input type="checkbox" id="ChkEsPublico" name="EsPublico" className="checkbox"/>
+                            <input type="checkbox" id="ChkEsPublico" name="EsPublico" tabIndex="3"/>
+                            &nbsp;¿Torneo público?
                         </label>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Guardar torneo"/>
+                        <input type="submit" value="Guardar torneo" tabIndex="4"/>
                     </div>
                 </form>
             </div>
@@ -53,5 +83,5 @@ class FormularioTorneo extends React.Component {
 }
 
 export default connect((state) => {
-    return {TiposTorneos: state.TiposTorneos}
+    return {TiposTorneos: state.TiposTorneos, CrudTorneo: state.CrudTorneo}
 })(FormularioTorneo);
