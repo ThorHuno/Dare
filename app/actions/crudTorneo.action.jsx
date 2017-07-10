@@ -12,7 +12,7 @@ export var GuardadoTorneoRequest = (parametros) => {
         axios
             .post('/api/GuardarTorneo', parametros)
             .then((respuesta) => {
-                dispatch(GuardadoTorneo({estatus: 'exito', guardado: true, estaGuardando: false}));
+                dispatch(GuardadoTorneo({estatus: 'exito', guardado: true, estaGuardando: false, error: {}}));
             })
             .catch((error) => {
                 dispatch(GuardadoTorneo({estatus: 'error', guardado: false, estaGuardando: false, error}));

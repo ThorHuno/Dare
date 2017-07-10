@@ -4,6 +4,7 @@ const schemaGuardarTorneo = {
             "type": "string",
             "minLength": 5,
             "maxLength": 30,
+            "invalidMessage": "El nombre del torneo debe tener al menos 5 caractéres y no exceder los 30",
             "requiredMessage": "El nombre del torneo es requerido"
         },
         "TipoTorneo": {

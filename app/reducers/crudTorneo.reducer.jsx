@@ -17,7 +17,8 @@ export var CrudTorneo = (state = {
                     return {
                         ...state,
                         guardado: action.datos.guardado,
-                        estaGuardando: action.datos.estaGuardando
+                        estaGuardando: action.datos.estaGuardando,
+                        error: action.datos.error
                     }
                 case 'error':
                     return {

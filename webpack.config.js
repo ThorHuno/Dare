@@ -23,6 +23,8 @@ module.exports = {
             ListadoParticipantes: 'app/components/listadoParticipantes.jsx',
             Participante: 'app/components/participante.jsx',
             FormularioTorneo: 'app/components/formularioTorneo.jsx',
+            ErroresSummary: 'app/components/erroresSummary.jsx',
+            Error: 'app/components/error.jsx',
             /******Redux******/
             Constantes: 'app/constants/constants.js',
             ParticipantesReducer: 'app/reducers/participantes.reducer.jsx',
