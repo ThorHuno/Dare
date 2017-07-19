@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
 import ListadoParticipantes from 'ListadoParticipantes'
 import FormularioTorneo from 'FormularioTorneo'
 
@@ -11,7 +11,11 @@ require('bootstrap/dist/css/bootstrap.min.css')
 
 class App extends React.Component {
     render() {
-        return ( < div className = "container" > < FormularioTorneo /> </div>);
+        return ( < div className = "container" > <Switch>
+            <Route exact path='/' component={FormularioTorneo}/>
+            <Route path='/foo' component={ListadoParticipantes}/>
+        </Switch>
+        </div>);
     }
 }
 

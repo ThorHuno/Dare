@@ -49,11 +49,12 @@ rutas.post("/GuardarTorneo", (req, res) => {
         var validar = validador(datos);
 
         if (validar) {
-            torneosRef
-                .push(datos)
-                .then((snapshot) => {
-                    res.json({estado: true, mensaje: 'Torneo creado satisfactoriamente'});
-                });
+            /**
+             * Cuando no tengo conexión a internet
+             */
+            res.json({Estado: true});
+            // torneosRef     .push(datos)     .then((snapshot) => { res.json({estado: true,
+            // mensaje: 'Torneo creado satisfactoriamente'}); });
         } else {
             res
                 .status(500)
@@ -68,6 +69,19 @@ rutas.post("/GuardarTorneo", (req, res) => {
 });
 
 rutas.get('/ObtenerTiposTorneo', (req, res) => {
+    /**
+     * Cuando no tengo conexión a internet
+     */
+    res.json([
+        {
+            Id: 1,
+            Valor: 'Simple eliminación'
+        }, {
+            Id: 2,
+            Valor: 'Doble eliminación'
+        }
+    ]);
+
     DBREF
         .child('TiposTorneo')
         .once("value")
