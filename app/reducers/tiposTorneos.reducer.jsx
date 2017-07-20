@@ -29,6 +29,17 @@ export var TiposTorneos = (state = {
                 ...state,
                 error: action.errorObteniendoTiposTorneo
             }
+        case 'LIMPIAR_TIPOS_TORNEOS':
+            return {
+                obteniendoTiposTorneo: false,
+                tiposTorneo: [
+                    {
+                        Id: 0,
+                        Valor: 'Seleccione'
+                    }
+                ],
+                error: {}
+            }
         default:
             return state;
     }

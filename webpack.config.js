@@ -25,6 +25,7 @@ module.exports = {
             FormularioTorneo: 'app/components/formularioTorneo.jsx',
             ErroresSummary: 'app/components/erroresSummary.jsx',
             Error: 'app/components/error.jsx',
+            ContenedorApp:'app/components/contenedorApp.jsx',
             /******Redux******/
             Constantes: 'app/constants/constants.js',
             ParticipantesReducer: 'app/reducers/participantes.reducer.jsx',

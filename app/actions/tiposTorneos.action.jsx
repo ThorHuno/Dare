@@ -1,6 +1,10 @@
 import axios from 'axios';
 import {types} from 'Constantes'
 
+export var LimpiarEstadosTiposTorneo = () => {
+    return {type: 'LIMPIAR_TIPOS_TORNEOS'}
+}
+
 export var ObtenerTiposTorneo = (obteniendoTiposTorneo) => {
     return {type: types.OBTENIENDO_TIPOS_TORNEO, obteniendoTiposTorneo}
 }
